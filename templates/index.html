@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Bus Stops{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1 class="display-4">Bus Stop App (a.k.a. our BTEC CityMapper)</h1>
+    <p class="lead">Get your bus info innit</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Stops</h2>
+      {% for stop in bus_stops %}
+      <h3>{{stop.stopName}}</h3>
+      <table style="width:100%">
+        <tr>
+          <th>Bus Number</th>
+          <th>Destination</th>
+          <th>Expected Time</th>
+        </tr>
+        {% for bus in stop.buses %} 
+        <tr>
+            <td>{{bus.line}}</td>
+            <td>{{bus.destination}}</td>
+            <td>{{bus.arrival_time}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <hr>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
